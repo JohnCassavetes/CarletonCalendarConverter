@@ -1,10 +1,10 @@
 # Carleton Calendar Converter
 
-It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel file to an Apple Calendar `.ics` file.
+It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an Apple Calendar `.ics` file.
 
 ## How It Works
 
-1. **Upload Your Schedule**: Choose your Excel file (.xlsx) that contains your course schedule.
+1. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.
 2. **Generate the Calendar**: The app processes your file and generates an `.ics` file.
 3. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.
 
@@ -23,7 +23,7 @@ Go to Academics and Registration -> Registration Planning -> View My Courses & S
 
 ![findingsched](img/HowToFindMySchedule/1.jpg)
 
-## How To Download Your Schedule as an Excel file
+## How To Download Your Schedule as an Excel `.xlsx` file
 
 ![excel](img/DownloadExcel/1.gif)
 
