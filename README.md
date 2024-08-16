@@ -1,4 +1,4 @@
-# Carleton Calendar Converter
+# [Carleton Calendar Converter](https://carletoncalendar.streamlit.app/)
 
 It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an Apple Calendar `.ics` file.
 
@@ -8,6 +8,9 @@ It's basically a tool that allows you to easily convert your Carleton academic s
 2. **Generate the Calendar**: The app processes your file and generates an `.ics` file.
 3. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.
 
+## https://carletoncalendar.streamlit.app/
+
+Click it to try.
 
 ## Demo
 
