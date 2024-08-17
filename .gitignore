@@ -2,6 +2,9 @@
 myenv/
 .env
 
+newenv/
+.env
+
 # Ignore other files
 __pycache__/
 *.pyc

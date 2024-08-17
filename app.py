@@ -109,12 +109,27 @@ def main():
                 file_name='myCarletonSchedule.ics',
                 mime='text/calendar'
             )
-    
-    st.write("---")
-    st.write("Feel free to reach out to me at gautamaj@carleton.edu for any inquiries")
+
+    st.markdown("---")
+
+    st.write("## Tutorial")
+
+    st.write("1. Choose your Excel `.xlsx` file that contains your course schedule.")
+    st.write("2. Click `Download the Apple Calendar File`. The app processes your file and generates an `.ics` file.")
+    st.write("3. Download the `.ics` file and import it into your Apple Calendar.")
+    st.image("img/HowItWorks/1.gif")
+    st.write("4. Click on The Download and Press Ok.")
+    st.image("img/HowItWorks/2.gif")
+
+    st.write("### How To Download Your Schedule as an Excel `.xlsx` file")
+    st.write("Go to Workday -> Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
+    st.image("img/DownloadExcel/1.gif")
+
+    st.markdown("---")
+
     st.write("It basically works, but legally I have to add a... Disclaimer: The developer is not liable for any damages resulting from the use of this application.")
-    st.write("[Github](https://github.com/JohnCassavetes/CarletonCalendarConverter)")
-        
+    st.write("Feel free to reach out to me at gautamaj@carleton.edu for any inquiries.")
+    st.write("Contribute to this project on [Github](https://github.com/JohnCassavetes/CarletonCalendarConverter).")
 
 if __name__ == "__main__":
     main()
