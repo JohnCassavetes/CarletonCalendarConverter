@@ -4,6 +4,10 @@ It's basically a tool that allows you to easily convert your Carleton academic s
 
 ## https://carletoncalendar.streamlit.app/
 
+## Why Did I Make This?
+
+Because I'm too lazy to input my schedule into my calendar.
+
 ## How It Works
 
 1. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.
