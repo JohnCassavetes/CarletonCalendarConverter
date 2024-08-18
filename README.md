@@ -10,6 +10,7 @@ It's basically a tool that allows you to easily convert your Carleton academic s
 - [Running It On Your Device Natively](#running-it-on-your-device-natively)
 - [Contributing](#contributing)
 - [It basically works, but legally I have to add a...Disclaimer](#it-basically-works-but-legally-i-have-to-add-adisclaimer)
+- [Contact](#contact)
 
 ## Why Did I Make This?
 
@@ -83,3 +84,6 @@ git push origin feature-name
 
 ## It basically works, but legally I have to add a...Disclaimer
 This tool is provided "as-is" without any guarantees. The developer is not liable for any damages resulting from the use of this application. This project is not affiliated with Carleton College. 
+
+## Contact
+Feel free to reach out to me at gautamaj@carleton.edu for any inquiries.
