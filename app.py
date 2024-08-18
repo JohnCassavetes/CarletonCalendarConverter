@@ -135,7 +135,7 @@ def main():
 
     st.markdown("---")
 
-    st.write("It basically works, but legally I have to add a... Disclaimer: The developer is not liable for any damages resulting from the use of this application.")
+    st.write('This tool is provided "as-is" without any guarantees. The developer is not liable for any damages resulting from the use of this application. This project is not affiliated with Carleton College.')
     st.write("Feel free to reach out to me at gautamaj@carleton.edu for any inquiries.")
     st.write("Contribute to this project on [Github](https://github.com/JohnCassavetes/CarletonCalendarConverter).")
 
