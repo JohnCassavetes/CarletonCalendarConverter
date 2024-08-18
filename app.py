@@ -3,6 +3,14 @@ import pandas as pd
 from icalendar import Calendar, Event
 from datetime import datetime, timedelta
 
+# Title for browser tab
+st.set_page_config(
+    page_title="Carleton Calendar Converter",  
+    page_icon="📅",  
+    layout="centered",  # Optional: 'centered' or 'wide' layout
+    initial_sidebar_state="auto"  # Optional: 'auto', 'expanded', or 'collapsed'
+)
+
 def process_excel(file):
     df = pd.read_excel(file, header=None)
     
