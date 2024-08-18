@@ -82,7 +82,6 @@ def create_ics_file(events, filename='schedule.ics'):
                 'MWF': ['Monday', 'Wednesday', 'Friday'],
             }
 
-            # Default to an empty list if the pattern is not recognized
             days = days_mapping.get(day.strip().upper(), [])
 
             for day in days:
@@ -99,10 +98,12 @@ def create_ics_file(events, filename='schedule.ics'):
                             added_dates.add((current_date, start_time, end_time))
                     current_date += timedelta(days=1)
 
-    with open(filename, 'wb') as f:
-        f.write(cal.to_ical())
-
-
+    try:
+        with open(filename, 'wb') as f:
+            f.write(cal.to_ical())
+        st.write(f"ICS file created successfully: {filename}")
+    except Exception as e:
+        st.error(f"Failed to create ICS file: {e}")
 
 def main():
     st.title('Carleton Calendar Converter')
