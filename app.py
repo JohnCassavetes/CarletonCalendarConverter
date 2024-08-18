@@ -91,7 +91,7 @@ def create_ics_file(events, filename='schedule.ics'):
 
 def main():
     st.title('Carleton Calendar Converter')
-    st.write('This tool converts your Carleton course schedule into an iCal file. (Currently only available for Apple Calendar)')
+    st.write("It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an Apple Calendar `.ics` file.")
     st.write()
     uploaded_file = st.file_uploader("Upload your Carleton course schedule (.xlsx)", type=["xlsx"])
 
@@ -115,7 +115,7 @@ def main():
     st.write("## Tutorial")
 
     st.write("1. Choose your Excel `.xlsx` file that contains your course schedule.")
-    st.write("2. Click `Download the Apple Calendar File`. The app processes your file and generates an `.ics` file.")
+    st.write("2. Click `Download the Apple Calendar File`, which processes your file and generates an `.ics` file.")
     st.write("3. Download the `.ics` file and import it into your Apple Calendar.")
     st.image("img/HowItWorks/1.gif")
     st.write("4. Click on The Download and Press Ok.")
