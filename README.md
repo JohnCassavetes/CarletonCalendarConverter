@@ -42,7 +42,7 @@ Go to Academics and Registration -> Registration Planning -> View My Courses & S
 ![excel](img/DownloadExcel/1.gif)
 
 ## Running It On Your Device Natively
-1. Clone this repository to your local machien:
+1. Clone this repository to your local machine:
 ```bash
 git clone https://github.com/johncassavetes/CarletonCalendarConverter.git
 ```
