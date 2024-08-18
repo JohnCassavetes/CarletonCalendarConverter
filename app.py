@@ -7,8 +7,8 @@ from datetime import datetime, timedelta
 st.set_page_config(
     page_title="Carleton Calendar Converter",  
     page_icon="📅",  
-    layout="centered",  # Optional: 'centered' or 'wide' layout
-    initial_sidebar_state="auto"  # Optional: 'auto', 'expanded', or 'collapsed'
+    layout="centered",  
+    initial_sidebar_state="auto" 
 )
 
 def process_excel(file):
@@ -44,10 +44,10 @@ def process_excel(file):
 
 def create_ics_file(events, filename='schedule.ics'):
     cal = Calendar()
-    
+
     def parse_time(t):
         return datetime.strptime(t.strip(), '%I:%M %p').time()
-    
+
     def add_event(event, start_datetime, end_datetime, location):
         ics_event = Event()
         ics_event.add('summary', event['Section'])
@@ -55,47 +55,54 @@ def create_ics_file(events, filename='schedule.ics'):
         ics_event.add('dtstart', start_datetime)
         ics_event.add('dtend', end_datetime)
         cal.add_component(ics_event)
-    
+
     def clean_location(location_str):
         return location_str.strip().replace('\n', ', ')
-    
+
     for _, row in events.iterrows():
         added_dates = set()  # Track added dates to avoid duplicates
-        
+
         for pattern in row['Meeting Patterns'].split('\n'):
             parts = pattern.split(' | ')
             if len(parts) < 3:
                 continue
-            
+
             day, time_range, location = parts
             start_time, end_time = time_range.split(' - ')
-            
-            if 'MW' in day:
-                days = ['Monday', 'Wednesday']
-            elif 'TTH' in day:
-                days = ['Tuesday', 'Thursday']
-            elif 'F' in day:
-                days = ['Friday']
-            else:
-                days = []
-            
+
+            # Handle all possible day patterns
+            days_mapping = {
+                'M': ['Monday'],
+                'T': ['Tuesday'],
+                'W': ['Wednesday'],
+                'TH': ['Thursday'],
+                'F': ['Friday'],
+                'MW': ['Monday', 'Wednesday'],
+                'TTH': ['Tuesday', 'Thursday'],
+                'MWF': ['Monday', 'Wednesday', 'Friday'],
+            }
+
+            # Default to an empty list if the pattern is not recognized
+            days = days_mapping.get(day.strip().upper(), [])
+
             for day in days:
-                # Calculate the specific date for the day of the week
                 start_date = row['Start Date']
                 end_date = row['End Date']
-                
                 current_date = start_date
+
                 while current_date <= end_date:
                     if current_date.strftime('%A') == day:
                         if (current_date, start_time, end_time) not in added_dates:
                             start_datetime = datetime.combine(current_date, parse_time(start_time))
                             end_datetime = datetime.combine(current_date, parse_time(end_time))
                             add_event(row, start_datetime, end_datetime, clean_location(location))
-                            added_dates.add((current_date, start_time, end_time))  # Mark this event as added
+                            added_dates.add((current_date, start_time, end_time))
                     current_date += timedelta(days=1)
-    
+
     with open(filename, 'wb') as f:
         f.write(cal.to_ical())
+
+
 
 def main():
     st.title('Carleton Calendar Converter')
