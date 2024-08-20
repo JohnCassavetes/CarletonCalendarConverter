@@ -128,18 +128,16 @@ def main():
 
     st.markdown("---")
 
-    st.write("## Tutorial")
+    st.write("## How It Works / Tutorial")
 
-    st.write("1. Choose your Excel `.xlsx` file that contains your course schedule.")
-    st.write("2. Click `Download the Apple Calendar File`, which processes your file and generates an `.ics` file.")
-    st.write("3. Download the `.ics` file and import it into your Apple Calendar.")
-    st.image("img/HowItWorks/1.gif")
-    st.write("4. Click on The Download and Press Ok.")
-    st.image("img/HowItWorks/2.gif")
-
-    st.write("### How To Download Your Schedule as an Excel `.xlsx` file")
-    st.write("Go to Workday -> Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
+    st.write("1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
     st.image("img/DownloadExcel/1.gif")
+    st.write("2. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.")
+    st.write("3. **Generate the Calendar**: Click `Download the Apple Calendar File`, which processes your file and generates an `.ics` file.")
+    st.write("4. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.")
+    st.image("img/HowItWorks/1.gif")
+    st.write("5. **Voila**: Click on The Download and Press Ok.")
+    st.image("img/HowItWorks/2.gif")
 
     st.markdown("---")
 

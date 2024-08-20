@@ -25,21 +25,19 @@ Because I was too lazy to input my schedule into my calendar.
 
 ## How It Works / Tutorial
 
-1. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.
-2. **Generate the Calendar**: Click `Download the Apple Calendar File`, which processes your file and generates an `.ics` file.
-3. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.
+1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules
+
+![excel](img/DownloadExcel/1.gif)
+
+2. **Upload Your Schedule**: Choose the Excel `.xlsx` file that contains your course schedule.
+3. **Generate the Calendar**: Click `Download the Apple Calendar File`, which processes your file and generates an `.ics` file.
+4. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.
 
 ![1](img/HowItWorks/1.gif)
 
-4. **Voila**: Click on The Download and Press Ok.
+5. **Voila**: Click on The Download and Press Ok.
 
 ![2](img/HowItWorks/2.gif)
-
-### How To Download Your Schedule as an Excel `.xlsx` file
-
-Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules
-
-![excel](img/DownloadExcel/1.gif)
 
 ## Running It On Your Device Natively
 1. Clone this repository to your local machine:
