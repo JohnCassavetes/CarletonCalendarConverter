@@ -2,11 +2,12 @@
 
 It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an Apple Calendar `.ics` file.
 
+![main](img/main.gif)
+
 ## Table of Contents
 - [Why Did I Make This?](#why-did-i-make-this)
 - [Features](#features)
 - [How It Works / Tutorial](#how-it-works--tutorial)
-- [How To Download Your Schedule as an Excel `.xlsx` file](#how-to-download-your-schedule-as-an-excel-xlsx-file)
 - [Running It On Your Device Natively](#running-it-on-your-device-natively)
 - [Contributing](#contributing)
 - [It basically works, but legally I have to add a...Disclaimer](#it-basically-works-but-legally-i-have-to-add-adisclaimer)

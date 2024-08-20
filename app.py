@@ -128,6 +128,11 @@ def main():
 
     st.markdown("---")
 
+    st.write("## What It Does")
+    st.image("img/main.gif")
+
+    st.markdown("---")
+
     st.write("## How It Works / Tutorial")
 
     st.write("1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
