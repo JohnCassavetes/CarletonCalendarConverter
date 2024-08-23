@@ -7,10 +7,10 @@ It's basically a tool that allows you to easily convert your Carleton academic s
 ## Table of Contents
 - [Why Did I Make This?](#why-did-i-make-this)
 - [Features](#features)
-- [How It Works / Tutorial](#how-it-works--tutorial)
-- [Running It On Your Device Natively](#running-it-on-your-device-natively)
+- [Tutorial](#how-it-works--tutorial)
+- [Run Locally](#running-it-on-your-device-natively)
 - [Contributing](#contributing)
-- [It basically works, but legally I have to add a...Disclaimer](#it-basically-works-but-legally-i-have-to-add-adisclaimer)
+- [Disclaimer](#it-basically-works-but-legally-i-have-to-add-adisclaimer)
 - [Contact](#contact)
 
 ## Why Did I Make This?
