@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
 import pandas as pd
 from icalendar import Calendar, Event
 from datetime import datetime, timedelta
@@ -71,6 +70,7 @@ def create_ics_file(events, filename='schedule.ics'):
             day, time_range, location = parts
             start_time, end_time = time_range.split(' - ')
 
+            # Handle all possible day patterns
             days_mapping = {
                 'M': ['Monday'],
                 'T': ['Tuesday'],
@@ -101,16 +101,14 @@ def create_ics_file(events, filename='schedule.ics'):
     try:
         with open(filename, 'wb') as f:
             f.write(cal.to_ical())
-        # st.write(f"ICS file created successfully: {filename}")
-        st.write(f"Success!")
+        st.write(f"ICS file created successfully: {filename}")
     except Exception as e:
         st.error(f"Failed to create ICS file: {e}")
 
 def main():
     st.title('Carleton Calendar Converter')
-    st.image("img/main.gif")
-    st.write("It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an `.ics` Calendar file.")
-    
+    st.write("It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an Apple Calendar `.ics` file.")
+    st.write()
     uploaded_file = st.file_uploader("Upload your Carleton course schedule (.xlsx)", type=["xlsx"])
 
     if uploaded_file:
@@ -122,53 +120,33 @@ def main():
         
         with open('schedule.ics', 'rb') as f:
             st.download_button(
-                label="Download the `.ics` Calendar File",
+                label="Download The Apple Calendar File",
                 data=f,
                 file_name='myCarletonSchedule.ics',
                 mime='text/calendar'
             )
 
     st.markdown("---")
-    selected = option_menu(
-        menu_title="Tutorials", 
-        options=["MacBook", "Google Calendar"],  
-        icons=["apple", "google"],  
-        menu_icon="book", 
-        default_index=0,  
-        orientation="horizontal",
-    )
 
-    if selected == "MacBook":
-        st.write("## How It Works / Tutorial for MacBook")
-        st.write("1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
-        st.image("img/DownloadExcel/1.gif")
-        st.write("2. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.")
-        st.write("3. **Generate the Calendar**: Click `Download the .ics Calendar File`, which processes your file and generates an `.ics` file.")
-        st.write("4. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.")
-        st.image("img/HowItWorks/1.gif")
-        st.write("5. **Voila**: Click on The Download and Press Ok.")
-        st.image("img/HowItWorks/2.gif")
-
-    elif selected == "Google Calendar":
-        st.write("## How It Works / Tutorial for Google Calendar")
-        st.write("1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
-        st.image("img/DownloadExcel/1.gif")
-        st.write("2. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.")
-        st.write("3. **Generate the Calendar**: Click `Download the .ics Calendar File`, which processes your file and generates an `.ics` file.")
-        st.write("4. **Download the `.ics` file**.")
-        st.image("img/HowItWorks/1.gif")
-        st.write("5. **Open Google Calendar**. In the top right, click Setting > Setting.")
-        st.image("img/HowItWorks/Google/1.jpg")
-        st.write("6. Click on Import & Export.")
-        st.image("img/HowItWorks/Google/2.jpg")
-        st.write("7. Click Select file from your computer and select the `.ics` file.")
-        st.image("img/HowItWorks/Google/3.jpg")
-        st.write("8. Choose which calendar to add the imported events to. By default, events will be imported into your primary calendar. Click Import.")
-        st.image("img/HowItWorks/Google/4.jpg")
-        st.write("9. **Voila**: Your schedule is now imported into your Google Calendar.")
+    st.write("## What It Does")
+    st.image("img/main.gif")
 
     st.markdown("---")
-    st.write('Disclaimer: This tool is provided "as-is" without any guarantees. The developer is not liable for any damages resulting from the use of this application. This project is not affiliated with Carleton College.')
+
+    st.write("## How It Works / Tutorial")
+
+    st.write("1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
+    st.image("img/DownloadExcel/1.gif")
+    st.write("2. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.")
+    st.write("3. **Generate the Calendar**: Click `Download the Apple Calendar File`, which processes your file and generates an `.ics` file.")
+    st.write("4. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.")
+    st.image("img/HowItWorks/1.gif")
+    st.write("5. **Voila**: Click on The Download and Press Ok.")
+    st.image("img/HowItWorks/2.gif")
+
+    st.markdown("---")
+
+    st.write('It basically works, but legally I have to add a...Disclaimer: This tool is provided "as-is" without any guarantees. The developer is not liable for any damages resulting from the use of this application. This project is not affiliated with Carleton College.')
     st.write("Feel free to reach out to me at gautamaj@carleton.edu for any inquiries.")
     st.write("Contribute to this project on [Github](https://github.com/JohnCassavetes/CarletonCalendarConverter).")
 
