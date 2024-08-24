@@ -53,23 +53,23 @@ Because I was too lazy to input my schedule into my calendar.
 
 ![b](img/HowItWorks/1.gif)
 
-5. **Open Google Calendar**. In the top right, click Setting > Setting.
+5. **Open Google Calendar**: In the top right, click on the Settings icon, then select "Settings."
 
 ![c](img/HowItWorks/Google/1.jpg)
 
-6. Click on Import & Export."
+6. **Click on Import & Export**: Within the Settings menu, locate and click on "Import & Export."
 
 ![d](img/HowItWorks/Google/2.jpg)
 
-7. Click Select file from your computer and select the `.ics` file.
+7. **Import the `.ics` file**: Click "Select file from your computer," and choose the `.ics` file you downloaded earlier.
 
 ![e](img/HowItWorks/Google/3.jpg)
 
-8. Choose which calendar to add the imported events to. By default, events will be imported into your primary calendar. Click Import.
+8. **Choose Your Calendar**: Select which calendar to add the imported events to—by default, events will be imported into your primary calendar. Click "Import" to finalize.
 
 ![f](img/HowItWorks/Google/4.jpg)
 
-9. **Voila**: Your schedule is now imported into your Google Calendar.
+9. **Voila**: Your course schedule is now successfully imported into your Google Calendar, ready for you to view and manage.
 
 ## Run Locally
 1. Clone this repository to your local machine:
