@@ -1,14 +1,15 @@
 # [📆 Carleton Calendar Converter 🥏](https://carletoncalendar.streamlit.app/)
 
-It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an Apple Calendar `.ics` file.
+It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an `.ics` Calendar file.
 
 ![main](img/main.gif)
 
 ## Table of Contents
 - [Why Did I Make This?](#why-did-i-make-this)
 - [Features](#features)
-- [Tutorial](#how-it-works--tutorial)
-- [Run Locally](#running-it-on-your-device-natively)
+- [Tutorial (Macbook)](#how-it-works--tutorial-macbook)
+- [Tutorial (Google Calendar)](#how-it-works--tutorial-google-calendar)
+- [Run Locally](#run-locally)
 - [Contributing](#contributing)
 - [Disclaimer](#it-basically-works-but-legally-i-have-to-add-adisclaimer)
 - [Contact](#contact)
@@ -19,19 +20,19 @@ Because I was too lazy to input my schedule into my calendar.
 
 ## Features
 
-- **Excel to Calendar Conversion**: Converts your course schedule from an Excel file into an Apple Calendar-compatible `.ics` file.
+- **Excel to Calendar Conversion**: Converts your course schedule from an Excel file into an `.ics` file.
 - **Automatic Filtering**: Automatically excludes dropped or withdrawn courses from the schedule.
 - **User-Friendly Interface**: Built using Streamlit for a simple and clean user experience.
 - **Lightweight and Fast**: Get your calendar file in just a few clicks!
 
-## How It Works / Tutorial
+## How It Works / Tutorial (Macbook)
 
 1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules
 
 ![excel](img/DownloadExcel/1.gif)
 
 2. **Upload Your Schedule**: Choose the Excel `.xlsx` file that contains your course schedule.
-3. **Generate the Calendar**: Click `Download the Apple Calendar File`, which processes your file and generates an `.ics` file.
+3. **Generate the Calendar**: Click `Download the .ics Calendar File`, which processes your file and generates an `.ics` file.
 4. **Download and Import**: Download the `.ics` file and import it into your Apple Calendar.
 
 ![1](img/HowItWorks/1.gif)
@@ -40,7 +41,37 @@ Because I was too lazy to input my schedule into my calendar.
 
 ![2](img/HowItWorks/2.gif)
 
-## Running It On Your Device Natively
+## How It Works / Tutorial (Google Calendar)
+
+1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules"
+
+![a](img/DownloadExcel/1.gif)
+
+2. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.
+3. **Generate the Calendar**: Click `Download the .ics Calendar File`, which processes your file and generates an `.ics` file.
+4. **Download the `.ics` file**.
+
+![b](img/HowItWorks/1.gif)
+
+5. **Open Google Calendar**. In the top right, click Setting > Setting.
+
+![c](img/HowItWorks/Google/1.jpg)
+
+6. Click on Import & Export."
+
+![d](img/HowItWorks/Google/2.jpg)
+
+7. Click Select file from your computer and select the `.ics` file.
+
+![e](img/HowItWorks/Google/3.jpg)
+
+8. Choose which calendar to add the imported events to. By default, events will be imported into your primary calendar. Click Import.
+
+![f](img/HowItWorks/Google/4.jpg)
+
+9. **Voila**: Your schedule is now imported into your Google Calendar.
+
+## Run Locally
 1. Clone this repository to your local machine:
 ```bash
 git clone https://github.com/johncassavetes/CarletonCalendarConverter.git
