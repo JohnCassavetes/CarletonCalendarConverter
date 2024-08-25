@@ -107,10 +107,13 @@ def create_ics_file(events, filename='schedule.ics'):
         st.error(f"Failed to create ICS file: {e}")
 
 def main():
+    
     st.title('Carleton Calendar Converter')
-    st.image("img/main.gif")
+    
     st.write("It's basically a tool that allows you to easily convert your Carleton academic schedule from an Excel `.xlsx` file to an `.ics` Calendar file.")
     
+    st.image("img/main.gif")
+
     uploaded_file = st.file_uploader("Upload your Carleton course schedule (.xlsx)", type=["xlsx"])
 
     if uploaded_file:
