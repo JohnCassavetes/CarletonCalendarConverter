@@ -63,40 +63,42 @@ def create_ics_file(events, filename='schedule.ics'):
     for _, row in events.iterrows():
         added_dates = set()  # Track added dates to avoid duplicates
 
-        for pattern in row['Meeting Patterns'].split('\n'):
-            parts = pattern.split(' | ')
-            if len(parts) < 3:
-                continue
+        # Check if 'Meeting Patterns' is valid (not NaN and is a string)
+        if pd.notna(row['Meeting Patterns']) and isinstance(row['Meeting Patterns'], str):
+            for pattern in row['Meeting Patterns'].split('\n'):
+                parts = pattern.split(' | ')
+                if len(parts) < 3:
+                    continue
 
-            day, time_range, location = parts
-            start_time, end_time = time_range.split(' - ')
+                day, time_range, location = parts
+                start_time, end_time = time_range.split(' - ')
 
-            days_mapping = {
-                'M': ['Monday'],
-                'T': ['Tuesday'],
-                'W': ['Wednesday'],
-                'TH': ['Thursday'],
-                'F': ['Friday'],
-                'MW': ['Monday', 'Wednesday'],
-                'TTH': ['Tuesday', 'Thursday'],
-                'MWF': ['Monday', 'Wednesday', 'Friday'],
-            }
+                days_mapping = {
+                    'M': ['Monday'],
+                    'T': ['Tuesday'],
+                    'W': ['Wednesday'],
+                    'TH': ['Thursday'],
+                    'F': ['Friday'],
+                    'MW': ['Monday', 'Wednesday'],
+                    'TTH': ['Tuesday', 'Thursday'],
+                    'MWF': ['Monday', 'Wednesday', 'Friday'],
+                }
 
-            days = days_mapping.get(day.strip().upper(), [])
+                days = days_mapping.get(day.strip().upper(), [])
 
-            for day in days:
-                start_date = row['Start Date']
-                end_date = row['End Date']
-                current_date = start_date
+                for day in days:
+                    start_date = row['Start Date']
+                    end_date = row['End Date']
+                    current_date = start_date
 
-                while current_date <= end_date:
-                    if current_date.strftime('%A') == day:
-                        if (current_date, start_time, end_time) not in added_dates:
-                            start_datetime = datetime.combine(current_date, parse_time(start_time))
-                            end_datetime = datetime.combine(current_date, parse_time(end_time))
-                            add_event(row, start_datetime, end_datetime, clean_location(location))
-                            added_dates.add((current_date, start_time, end_time))
-                    current_date += timedelta(days=1)
+                    while current_date <= end_date:
+                        if current_date.strftime('%A') == day:
+                            if (current_date, start_time, end_time) not in added_dates:
+                                start_datetime = datetime.combine(current_date, parse_time(start_time))
+                                end_datetime = datetime.combine(current_date, parse_time(end_time))
+                                add_event(row, start_datetime, end_datetime, clean_location(location))
+                                added_dates.add((current_date, start_time, end_time))
+                        current_date += timedelta(days=1)
 
     try:
         with open(filename, 'wb') as f:
