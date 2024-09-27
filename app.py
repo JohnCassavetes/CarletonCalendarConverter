@@ -20,7 +20,6 @@ def process_excel(file):
     if pd.isna(start_index):
         raise ValueError("Could not find 'My Enrolled Courses' in the file.")
     
-    # Initialize list to collect relevant rows
     relevant_data = []
     
     # Process rows from start_index + 2 until we hit "My Dropped/Withdrawn Courses"
@@ -61,7 +60,7 @@ def create_ics_file(events, filename='schedule.ics'):
         return location_str.strip().replace('\n', ', ')
 
     for _, row in events.iterrows():
-        added_dates = set()  # Track added dates to avoid duplicates
+        added_dates = set()
 
         # Check if 'Meeting Patterns' is valid (not NaN and is a string)
         if pd.notna(row['Meeting Patterns']) and isinstance(row['Meeting Patterns'], str):
