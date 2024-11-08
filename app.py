@@ -144,7 +144,7 @@ def main():
 
     if selected == "MacBook":
         st.write("## How It Works / Tutorial for MacBook")
-        st.write("1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules")
+        st.write("1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to `Academics and Registration` -> `Registration Planning` -> `View My Courses`")
         st.image("img/DownloadExcel/1.gif")
         st.write("2. **Upload Your Schedule**: Choose your Excel `.xlsx` file that contains your course schedule.")
         st.write("3. **Generate the Calendar**: Click `Download the .ics Calendar File`, which processes your file and generates an `.ics` file.")
