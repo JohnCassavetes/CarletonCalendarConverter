@@ -27,7 +27,7 @@ Because I was too lazy to input my schedule into my calendar.
 
 ## How It Works / Tutorial (Macbook)
 
-1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules
+1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to `Academics and Registration` -> `Registration Planning` -> `View My Courses` (DONT CLICK View My Saved Schedules!)
 
 ![excel](img/DownloadExcel/1.gif)
 
@@ -43,7 +43,7 @@ Because I was too lazy to input my schedule into my calendar.
 
 ## How It Works / Tutorial (Google Calendar)
 
-1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to Academics and Registration -> Registration Planning -> View My Courses & Saved Schedules"
+1. **Download Your Schedule as an Excel `.xlsx` file on Workday**: Go to `Academics and Registration` -> `Registration Planning` -> `View My Courses` (DONT CLICK View My Saved Schedules!)
 
 ![a](img/DownloadExcel/1.gif)
 
