@@ -13,34 +13,62 @@ st.set_page_config(
 )
 
 def process_excel(file):
-    df = pd.read_excel(file, header=None)
-    
-    # Identify the start index for "My Enrolled Courses"
-    start_index = df[df.iloc[:, 0].str.contains('My Enrolled Courses', na=False)].index.min()
-    if pd.isna(start_index):
-        raise ValueError("Could not find 'My Enrolled Courses' in the file.")
-    
-    relevant_data = []
-    
-    # Process rows from start_index + 2 until we hit "My Dropped/Withdrawn Courses"
-    for index, row in df.iloc[start_index + 2:].iterrows():
-        if 'My Dropped/Withdrawn Courses' in str(row[0]):
-            break
-        relevant_data.append(row)
-    
-    # Create DataFrame from the collected data
-    relevant_df = pd.DataFrame(relevant_data)
-    
-    # Select relevant columns and set column headers
-    relevant_df = relevant_df.iloc[:, [4, 7, 10, 11]]
-    relevant_df.columns = ['Section', 'Meeting Patterns', 'Start Date', 'End Date']
-    
-    # Convert date columns to datetime and drop rows with NaN dates
-    relevant_df['Start Date'] = pd.to_datetime(relevant_df['Start Date'], format='%m/%d/%y', errors='coerce')
-    relevant_df['End Date'] = pd.to_datetime(relevant_df['End Date'], format='%m/%d/%y', errors='coerce')
-    relevant_df = relevant_df.dropna(subset=['Start Date', 'End Date'])
-
-    return relevant_df
+    try:
+        # Read the Excel file with header=None to get raw data
+        df = pd.read_excel(file, header=None)
+        
+        # Find the index of "My Enrolled Courses"
+        enrolled_index = None
+        for idx, row in df.iterrows():
+            if row[0] == "My Enrolled Courses":
+                enrolled_index = idx
+                break
+                
+        if enrolled_index is None:
+            st.error("Could not find 'My Enrolled Courses' in the file.")
+            return None
+            
+        # Find the index of "My Waitlisted Courses" or any other endpoint
+        end_index = None
+        for idx, row in df.iloc[enrolled_index+1:].iterrows():
+            if pd.notna(row[0]) and row[0] in ["My Waitlisted Courses", "My Completed Courses", "My Dropped/Withdrawn Courses"]:
+                end_index = idx
+                break
+                
+        if end_index is None:
+            st.error("Could not find the end of enrolled courses section.")
+            return None
+            
+        # Find the header row which is typically 2 rows after "My Enrolled Courses"
+        header_index = enrolled_index + 2
+        
+        # Extract relevant data between the header row and the end index
+        data_start = header_index + 1
+        relevant_df = df.iloc[data_start:end_index].copy()
+        
+        # Get column indices for the required fields
+        # Examining the Excel data, the columns are:
+        # Section at index 5
+        # Meeting Patterns at index 9
+        # Start Date at index 11
+        # End Date at index 12
+        relevant_df = relevant_df.iloc[:, [5, 9, 11, 12]]
+        
+        # Set column headers
+        relevant_df.columns = ['Section', 'Meeting Patterns', 'Start Date', 'End Date']
+        
+        # Convert date columns to datetime
+        relevant_df['Start Date'] = pd.to_datetime(relevant_df['Start Date'], errors='coerce')
+        relevant_df['End Date'] = pd.to_datetime(relevant_df['End Date'], errors='coerce')
+        
+        # Drop rows with NaN dates
+        relevant_df = relevant_df.dropna(subset=['Start Date', 'End Date'])
+        
+        return relevant_df
+        
+    except Exception as e:
+        st.error(f"Error processing Excel file: {str(e)}")
+        return None
 
 def create_ics_file(events, filename='schedule.ics'):
     cal = Calendar()
@@ -102,8 +130,7 @@ def create_ics_file(events, filename='schedule.ics'):
     try:
         with open(filename, 'wb') as f:
             f.write(cal.to_ical())
-        # st.write(f"ICS file created successfully: {filename}")
-        st.write(f"Success!")
+        st.success("Calendar file created successfully!")
     except Exception as e:
         st.error(f"Failed to create ICS file: {e}")
 
@@ -118,19 +145,24 @@ def main():
     uploaded_file = st.file_uploader("Upload your Carleton course schedule (.xlsx)", type=["xlsx"])
 
     if uploaded_file:
-        data = process_excel(uploaded_file)
-        st.write("Your Courses for The Term:")
-        st.write(data)
-        
-        create_ics_file(data)
-        
-        with open('schedule.ics', 'rb') as f:
-            st.download_button(
-                label="Download the `.ics` Calendar File",
-                data=f,
-                file_name='myCarletonSchedule.ics',
-                mime='text/calendar'
-            )
+        with st.spinner("Processing your schedule..."):
+            data = process_excel(uploaded_file)
+            
+        if data is not None and not data.empty:
+            st.write("Your Courses for The Term:")
+            st.write(data)
+            
+            create_ics_file(data)
+            
+            with open('schedule.ics', 'rb') as f:
+                st.download_button(
+                    label="Download the `.ics` Calendar File",
+                    data=f,
+                    file_name='myCarletonSchedule.ics',
+                    mime='text/calendar'
+                )
+        else:
+            st.error("Could not extract course data from the file. Please make sure you're uploading the correct Excel file.")
 
     st.markdown("---")
     selected = option_menu(
